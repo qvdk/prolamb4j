@@ -1,0 +1,13 @@
+/.vscode/
+/.idea/
+target/
+*.iml
+.DS_Store
+.gradle
+.classpath
+.factorypath
+.project
+.settings/
+.gradle/
+*.launch
+*.orig
