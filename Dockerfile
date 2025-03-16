@@ -4,7 +4,7 @@ FROM amazoncorretto:${JAVA_VERSION}-al2023
 
 WORKDIR /build
 
-ARG SWIPL_VERSION=9.3.8
+ARG SWIPL_VERSION=9.3.21
 
 RUN dnf install -y \
   gcc \
@@ -38,6 +38,7 @@ RUN mkdir -p /var/task && \
     git checkout V${SWIPL_VERSION} && \
     git submodule update --init && \
     git submodule update --init packages/jpl && \
+    sed -i 's/#define JPL_MAX_POOL_ENGINES 10/#define JPL_MAX_POOL_ENGINES 1/' packages/jpl/src/main/c/jpl.c && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_BUILD_TYPE=PGO \
